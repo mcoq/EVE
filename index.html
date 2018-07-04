@@ -3,18 +3,39 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>装备研发中心2017年投标统计台账-2017年投标占比</title>
-    <script src="echarts.min.js"></script>
+    <script src="echarts.js"></script>
+    <style>
+        body,html{
+            margin: 0;
+            padding: 0;
+        }
+        .doit{
+            width: 1200px;
+            height: 800px;
+        }
+        @media(max-width:678px){
+            .doit{
+                width: 375px
+            }
+        }
+        @media(mix-width:800px){
+            .doit{
+                width: 1200px
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div id="main" style="width: 1200px;height:800px;"></div>
+    <div id="main" class="doit"></div>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
         option = {
+           baseOption:{
             title: [{
                 text: '装备研发中心投标统计台账 投标占比',
                 subtext: '2017-2018',
@@ -40,7 +61,7 @@
                 
             },
             {
-                text: 'By：孟庆军',
+                text: 'By：mengqj',
                 top: "75%",
                 left: '0%',
                 textStyle: {
@@ -188,6 +209,111 @@
                     ]
                 }
             ]
+           },
+           media: [
+           {
+                option: {
+                    legend: {
+                        orient: 'vertical',
+                        x: 'left',
+                    },
+                    series: [
+                        {
+                            radius: ['21%', '42%'],
+                            center: ['52%', '40%'],
+                        },
+                        {
+                            radius: ['21%', '42%'],
+                            center: ['85%', '40%'],
+                        }
+                    ]
+                }
+            },
+            {
+                query: {
+                    minAspectRatio: 1
+                },
+                option: {
+                    legend: {
+                        orient: 'vertical',
+                        x: 'left',
+                    },
+                    series: [
+                        {
+                            radius: ['21%', '42%'],
+                            center: ['52%', '40%'],
+                        },
+                        {
+                            radius: ['21%', '42%'],
+                            center: ['85%', '40%'],
+                        }
+                    ]
+                }
+            },
+            {
+                query: {
+                    maxWidth: 678, 
+                },
+                option: {
+                    legend: {
+                       show:false
+                    },
+                    series: [
+                        {
+                            radius: ['30%', '70%'],
+                            center: ['50%', '35%'],
+                        },
+                        {
+                            radius: ['30%', '70%'],
+                            center: ['50%', '75%'],
+                        }
+                    ],
+                    toolbox:{
+                        orient:"vertical",
+                        top:"20px"
+                        
+                    },
+                    title: [{
+                        text: '装备研发中心投标统计台账 投标占比',
+                        subtext: '2017-2018',
+                        x: 'center'
+                    },
+                    {
+                        text: '2017',
+                        top: "54%",
+                        left: '46%',
+                        textStyle: {
+                            fontSize: '12',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    {
+                        text: '2018',
+                        top: "94%",
+                        right: '45%',
+                        textStyle: {
+                            fontSize: '12',
+                            fontWeight: 'bold'
+                        }
+                        
+                    },
+                    {
+                        text: 'By：mengqj',
+                        top: "95%",
+                        left: '0%',
+                        textStyle: {
+                            fontSize: '14',
+                            fontWeight: 'bold'
+                        }
+                        
+                    }
+                    
+                    
+                ]
+                  
+                }
+            }
+        ]
         };
         myChart.setOption(option);
     </script>
