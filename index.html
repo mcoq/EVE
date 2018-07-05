@@ -6,316 +6,484 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>装备研发中心2017年投标统计台账-2017年投标占比</title>
-    <script src="echarts.min.js"></script>
+    <script src="echarts.js"></script>
     <style>
-        body,html{
+        body,
+        html {
             margin: 0;
             padding: 0;
         }
-        .doit{
+
+        .doit {
             width: 1200px;
             height: 800px;
         }
-        @media(max-width:678px){
-            .doit{
+
+        .doit2 {
+            width: 1200px;
+            height: 600px;
+            margin-top: -150px
+        }
+
+        @media(max-width:678px) {
+            .doit,
+            .doit2 {
                 width: 375px
             }
         }
-        @media(mix-width:800px){
-            .doit{
+
+        @media(mix-width:800px) {
+            .doit,
+            doit2 {
                 width: 1200px
             }
+            ;
         }
     </style>
 </head>
 
 <body>
     <div id="main" class="doit"></div>
+    <div id="main2" class="doit2"></div>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
+        var data2017 = [2, 4, 1, 7, 26, 4, 1, 8, 1, 2, 6, 3, 1, 4, 7, 1, 1, 1, 1, 1, 0, 0, 0];
+        var data2018 = [1, 12, 3, 10, 1, 9, 0, 1, 0, 0, 1, 4, 0, 1, 1, 0, 0, 0, 0, 0, 1, 2, 1];
+        var d = 0;
+        var b = 0;
+        for (var i = 0; i < data2017.length; i++) {
+            d += data2017[i];
+        };
+        for (var i = 0; i < data2018.length; i++) {
+            b += data2018[i];
+        }
         option = {
-           baseOption:{
-            title: [{
-                text: '装备研发中心投标统计台账 投标占比',
-                subtext: '2017-2018',
-                x: 'center'
-            },
-            {
-                text: '2017',
-                top: "65%",
-                left: '48%',
-                textStyle: {
-                    fontSize: '30',
-                    fontWeight: 'bold'
-                }
-            },
-            {
-                text: '2018',
-                top: "65%",
-                right: '11%',
-                textStyle: {
-                    fontSize: '30',
-                    fontWeight: 'bold'
-                }
-                
-            },
-            {
-                text: 'By：mengqj',
-                top: "75%",
-                left: '0%',
-                textStyle: {
-                    fontSize: '14',
-                    fontWeight: 'bold'
-                }
-                
-            }
-            
-            
-        ],
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b}: {c} ({d}%)"
-            },
-            toolbox: {
-                show: true,
-                feature: {
-                    mark: { show: true },
-                    dataView: { show: true, readOnly: false },
-                    magicType: {
-                        show: true,
-                        type: ['pie', 'funnel']
-                    },
-                    restore: { show: true },
-                    saveAsImage: { show: true }
-                }
-            },
-            legend: {
-                orient: 'vertical',
-                x: 'left',
-                data: [ "中海石油（中国）有限公司（议标）",
-      "中海石油（中国）有限公司天津分公司（投、议标）" ,
-      "中海石油（中国）有限公司辽东作业公司（议标）",
-      "中海石油（中国）有限公司曹妃甸作业公司（投、议标）" ,
-      "中海石油（中国）有限公司渤西作业公司（投、议标）",
-      "中海石油（中国）有限公司秦皇岛32-6作业公司（投、议标）",
-      "中海石油（中国）有限公司渤中作业公司（议标）",
-      "中海石油（中国）有限公司蓬勃作业公司（投、议标）",
-      "中海石油（中国）有限公司渤南作业公司（议标）",
-      "中海石油（中国）有限公司天津分公司渤海石油研究院（议标）",
-      "中海石油（中国）有限公司上海分公司（投、议标）" ,
-      "中海石油（中国）东海西湖石油天然气作业公司（投、议标）",
-      "中海石油（中国）有限公司深圳分公司（投标）",
-      "中海油研究总院（议标）",
-      "中海油能源发展股份有限公司边际油田开发项目组（议标）",
-      "中海油能源发展股份有限公司安全环保分公司（议标）",
-      "中海油能源发展股份有限公司物流有限公司（议标）",
-      "中海油能源发展股份有限公司工程技术分公司（议标）",
-      "中海油能源发展股份有限公司销售服务分公司（议标）",
-      "中海福建天然气有限责任公司（投标）",
-                      "海洋石油工程股份有限公司(投标)",
-                       "中海石油（中国）有限公司天津分公司商务采办部（投、议标）",
-                       "中海石油气电集团有限责任公司（议标）"]
-            },
-            series: [
-                {
-                    name: '访问来源',
-                    type: 'pie',
-                    radius: ['21%', '42%'],
-                    center: ['52%', '40%'],
-                    avoidLabelOverlap: false,
-                    label: {
-                        normal: {
-                            formatter: "{b} ({d}%)",
-                            show: false,
-                            position: 'center'
-                        },
-                        emphasis: {
-                            show: true,
-                            textStyle: {
-                                fontSize: '12',
-                                fontWeight: 'bold'
-                            }
-                        }
-                    },
-                    labelLine: {
-                        normal: {
-                            show: false
-                        }
-                    },
-                    data: [
-                    { "value": 2, "name": "中海石油（中国）有限公司（议标）" },
-                    { "value": 4, "name": "中海石油（中国）有限公司天津分公司（投、议标）" },
-                    { "value": 1, "name": "中海石油（中国）有限公司辽东作业公司（议标）" },
-                    { "value": 7, "name": "中海石油（中国）有限公司曹妃甸作业公司（投、议标）" },
-                    { "value": 26, "name": "中海石油（中国）有限公司渤西作业公司（投、议标）"},
-                    { "value": 4, "name": "中海石油（中国）有限公司秦皇岛32-6作业公司（投、议标）" },
-                    { "value": 1, "name": "中海石油（中国）有限公司渤中作业公司（议标）"},
-                    { "value": 8, "name": "中海石油（中国）有限公司蓬勃作业公司（投、议标）"},
-                    { "value": 1, "name": "中海石油（中国）有限公司渤南作业公司（议标）" },
-                    { "value": 2, "name": "中海石油（中国）有限公司天津分公司渤海石油研究院（议标）" },
-                    { "value": 6, "name": "中海石油（中国）有限公司上海分公司（投、议标）" },
-                    { "value": 3, "name": "中海石油（中国）东海西湖石油天然气作业公司（投、议标）" },
-                    { "value": 1, "name": "中海石油（中国）有限公司深圳分公司（投标）" },
-                    { "value": 4, "name": "中海油研究总院（议标）" },
-                    { "value": 7, "name": "中海油能源发展股份有限公司边际油田开发项目组（议标）"},
-                    { "value": 1, "name": "中海油能源发展股份有限公司安全环保分公司（议标）"},
-                    { "value": 1, "name": "中海油能源发展股份有限公司物流有限公司（议标）"},
-                    { "value": 1, "name": "中海油能源发展股份有限公司工程技术分公司（议标）"},
-                    { "value": 1, "name": "中海油能源发展股份有限公司销售服务分公司（议标）"},
-                    { "value": 1, "name": "中海福建天然气有限责任公司（投标）"}
-                    ]
+            baseOption: {
+                title: [{
+                    text: '装备研发中心投标统计台账 投标占比',
+                    subtext: '2017-2018',
+                    x: 'center'
                 },
                 {
-                    name: '访问来源',
-                    type: 'pie',
-                    radius: ['21%', '42%'],
-                    center: ['85%', '40%'],
-                    avoidLabelOverlap: false,
-                    label: {
-                        normal: {
-                            formatter: "{b} ({d}%)",
-                            show: false,
-                            position: 'center'
-                        },
-                        emphasis: {
+                    text: '2017',
+                    subtext: '总投标数：'+d+'',
+                    top: "65%",
+                    left: '48%',
+                    textStyle: {
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                },
+                {
+                    text: '2018',
+                    subtext: '总投标数：'+b+'',
+                    top: "65%",
+                    right: '11%',
+                    textStyle: {
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+
+                },
+                {
+                    text: 'By：mengqj',
+                    top: "75%",
+                    left: '0%',
+                    textStyle: {
+                        fontSize: '14',
+                        fontWeight: 'bold'
+                    }
+
+                }
+
+
+                ],
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        mark: { show: true },
+                        dataView: { show: true, readOnly: false },
+                        magicType: {
                             show: true,
+                            type: ['pie', 'funnel']
+                        },
+                        restore: { show: true },
+                        saveAsImage: { show: true }
+                    }
+                },
+                legend: {
+                    orient: 'vertical',
+                    x: 'left',
+                    data: ["中海石油（中国）有限公司（议标）",
+                        "中海石油（中国）有限公司天津分公司（投、议标）",
+                        "中海石油（中国）有限公司辽东作业公司（议标）",
+                        "中海石油（中国）有限公司曹妃甸作业公司（投、议标）",
+                        "中海石油（中国）有限公司渤西作业公司（投、议标）",
+                        "中海石油（中国）有限公司秦皇岛32-6作业公司（投、议标）",
+                        "中海石油（中国）有限公司渤中作业公司（议标）",
+                        "中海石油（中国）有限公司蓬勃作业公司（投、议标）",
+                        "中海石油（中国）有限公司渤南作业公司（议标）",
+                        "中海石油（中国）有限公司天津分公司渤海石油研究院（议标）",
+                        "中海石油（中国）有限公司上海分公司（投、议标）",
+                        "中海石油（中国）东海西湖石油天然气作业公司（投、议标）",
+                        "中海石油（中国）有限公司深圳分公司（投标）",
+                        "中海油研究总院（议标）",
+                        "中海油能源发展股份有限公司边际油田开发项目组（议标）",
+                        "中海油能源发展股份有限公司安全环保分公司（议标）",
+                        "中海油能源发展股份有限公司物流有限公司（议标）",
+                        "中海油能源发展股份有限公司工程技术分公司（议标）",
+                        "中海油能源发展股份有限公司销售服务分公司（议标）",
+                        "中海福建天然气有限责任公司（投标）",
+                        "海洋石油工程股份有限公司(投标)",
+                        "中海石油（中国）有限公司天津分公司商务采办部（投、议标）",
+                        "中海石油气电集团有限责任公司（议标）"]
+                },
+                series: [
+                    {
+                        name: '访问来源',
+                        type: 'pie',
+                        radius: ['21%', '42%'],
+                        center: ['52%', '40%'],
+                        avoidLabelOverlap: false,
+                        label: {
+                            normal: {
+                                formatter: "{b} ({d}%)",
+                                show: false,
+                                position: 'center'
+                            },
+                            emphasis: {
+                                show: true,
+                                textStyle: {
+                                    fontSize: '12',
+                                    fontWeight: 'bold'
+                                }
+                            }
+                        },
+                        labelLine: {
+                            normal: {
+                                show: false
+                            }
+                        },
+                        data: [
+                            { "value": 2, "name": "中海石油（中国）有限公司（议标）" },
+                            { "value": 4, "name": "中海石油（中国）有限公司天津分公司（投、议标）" },
+                            { "value": 1, "name": "中海石油（中国）有限公司辽东作业公司（议标）" },
+                            { "value": 7, "name": "中海石油（中国）有限公司曹妃甸作业公司（投、议标）" },
+                            { "value": 26, "name": "中海石油（中国）有限公司渤西作业公司（投、议标）" },
+                            { "value": 4, "name": "中海石油（中国）有限公司秦皇岛32-6作业公司（投、议标）" },
+                            { "value": 1, "name": "中海石油（中国）有限公司渤中作业公司（议标）" },
+                            { "value": 8, "name": "中海石油（中国）有限公司蓬勃作业公司（投、议标）" },
+                            { "value": 1, "name": "中海石油（中国）有限公司渤南作业公司（议标）" },
+                            { "value": 2, "name": "中海石油（中国）有限公司天津分公司渤海石油研究院（议标）" },
+                            { "value": 6, "name": "中海石油（中国）有限公司上海分公司（投、议标）" },
+                            { "value": 3, "name": "中海石油（中国）东海西湖石油天然气作业公司（投、议标）" },
+                            { "value": 1, "name": "中海石油（中国）有限公司深圳分公司（投标）" },
+                            { "value": 4, "name": "中海油研究总院（议标）" },
+                            { "value": 7, "name": "中海油能源发展股份有限公司边际油田开发项目组（议标）" },
+                            { "value": 1, "name": "中海油能源发展股份有限公司安全环保分公司（议标）" },
+                            { "value": 1, "name": "中海油能源发展股份有限公司物流有限公司（议标）" },
+                            { "value": 1, "name": "中海油能源发展股份有限公司工程技术分公司（议标）" },
+                            { "value": 1, "name": "中海油能源发展股份有限公司销售服务分公司（议标）" },
+                            { "value": 1, "name": "中海福建天然气有限责任公司（投标）" }
+                        ]
+                    },
+                    {
+                        name: '访问来源',
+                        type: 'pie',
+                        radius: ['21%', '42%'],
+                        center: ['85%', '40%'],
+                        avoidLabelOverlap: false,
+                        label: {
+                            normal: {
+                                formatter: "{b} ({d}%)",
+                                show: false,
+                                position: 'center'
+                            },
+                            emphasis: {
+                                show: true,
+                                textStyle: {
+                                    fontSize: '12',
+                                    fontWeight: 'bold'
+                                }
+                            }
+                        },
+                        labelLine: {
+                            normal: {
+                                show: false
+                            }
+                        },
+                        data: [
+                            { "value": 1, "name": "中海石油（中国）有限公司（议标）" },
+                            { "value": 12, "name": "中海石油（中国）有限公司天津分公司（投、议标）" },
+                            { "value": 3, "name": "中海石油（中国）有限公司辽东作业公司（议标）" },
+                            { "value": 10, "name": "中海石油（中国）有限公司曹妃甸作业公司（投、议标）" },
+                            { "value": 1, "name": "中海石油（中国）有限公司渤西作业公司（投、议标）" },
+                            { "value": 9, "name": "中海石油（中国）有限公司秦皇岛32-6作业公司（投、议标）" },
+                            { "value": 1, "name": "中海石油（中国）有限公司蓬勃作业公司（投、议标）" },
+                            { "value": 1, "name": "中海石油（中国）有限公司上海分公司（投、议标）" },
+                            { "value": 4, "name": "中海石油（中国）东海西湖石油天然气作业公司（投、议标）" },
+                            { "value": 1, "name": "中海油研究总院（议标）" },
+                            { "value": 1, "name": "中海油能源发展股份有限公司边际油田开发项目组（议标）" },
+                            { "value": 1, "name": "海洋石油工程股份有限公司(投标)" },
+                            { "value": 2, "name": "中海石油（中国）有限公司天津分公司商务采办部（投、议标）" },
+                            { "value": 1, "name": "中海石油气电集团有限责任公司（议标）" }
+                        ]
+                    }
+                ]
+            },
+            media: [
+                {
+                    option: {
+                        legend: {
+                            orient: 'vertical',
+                            x: 'left',
+                        },
+                        series: [
+                            {
+                                radius: ['21%', '42%'],
+                                center: ['52%', '40%'],
+                            },
+                            {
+                                radius: ['21%', '42%'],
+                                center: ['85%', '40%'],
+                            }
+                        ]
+                    }
+                },
+                {
+                    query: {
+                        minAspectRatio: 1
+                    },
+                    option: {
+                        legend: {
+                            orient: 'vertical',
+                            x: 'left',
+                        },
+                        series: [
+                            {
+                                radius: ['21%', '42%'],
+                                center: ['52%', '40%'],
+                            },
+                            {
+                                radius: ['21%', '42%'],
+                                center: ['85%', '40%'],
+                            }
+                        ]
+                    }
+                },
+                {
+                    query: {
+                        maxWidth: 678,
+                    },
+                    option: {
+                        legend: {
+                            show: false
+                        },
+                        tooltip: {
+                            show: false
+                        },
+                        series: [
+                            {
+                                radius: ['30%', '70%'],
+                                center: ['50%', '25%'],
+                            },
+                            {
+                                radius: ['30%', '70%'],
+                                center: ['50%', '65%'],
+                            }
+                        ],
+                        toolbox: {
+                            orient: "vertical",
+                            top: "20px"
+
+                        },
+                        title: [{
+                            text: '装备研发中心投标统计台账 投标占比',
+                            subtext: '2017-2018',
+                            x: 'center'
+                        },
+                        {
+                            text: '2017',
+                            top: "43%",
+                            left: '45%',
                             textStyle: {
                                 fontSize: '12',
                                 fontWeight: 'bold'
                             }
+                        },
+                        {
+                            text: '2018',
+                            top: "82%",
+                            right: '33%',
+                            textStyle: {
+                                fontSize: '12',
+                                fontWeight: 'bold'
+                            }
+
+                        },
+                        {
+                            text: 'By：mengqj',
+                            top: "3%",
+                            left: '10%',
+                            textStyle: {
+                                fontSize: '10',
+                                fontWeight: 'bold'
+                            }
+
                         }
-                    },
-                    labelLine: {
-                        normal: {
-                            show: false
-                        }
-                    },
-                    data: [
-                    { "value": 1, "name": "中海石油（中国）有限公司（议标）"},
-                    { "value": 12, "name": "中海石油（中国）有限公司天津分公司（投、议标）"},
-                    { "value": 3, "name": "中海石油（中国）有限公司辽东作业公司（议标）"},
-                    { "value": 10, "name": "中海石油（中国）有限公司曹妃甸作业公司（投、议标）"},
-                    { "value": 1, "name": "中海石油（中国）有限公司渤西作业公司（投、议标）"},
-                    { "value": 9, "name": "中海石油（中国）有限公司秦皇岛32-6作业公司（投、议标）"},
-                    { "value": 1, "name": "中海石油（中国）有限公司蓬勃作业公司（投、议标）"},
-                    { "value": 1, "name": "中海石油（中国）有限公司上海分公司（投、议标）"},
-                    { "value": 4, "name": "中海石油（中国）东海西湖石油天然气作业公司（投、议标）"},
-                    { "value": 1, "name": "中海油研究总院（议标）"},
-                    { "value": 1, "name": "中海油能源发展股份有限公司边际油田开发项目组（议标）"},
-                    { "value": 1, "name": "海洋石油工程股份有限公司(投标)"},
-                    { "value": 2, "name": "中海石油（中国）有限公司天津分公司商务采办部（投、议标）"},
-                    { "value": 1, "name": "中海石油气电集团有限责任公司（议标）"}
-                    ]
+
+
+                        ]
+
+                    }
                 }
             ]
-           },
-           media: [
-           {
-                option: {
-                    legend: {
-                        orient: 'vertical',
-                        x: 'left',
-                    },
-                    series: [
-                        {
-                            radius: ['21%', '42%'],
-                            center: ['52%', '40%'],
-                        },
-                        {
-                            radius: ['21%', '42%'],
-                            center: ['85%', '40%'],
-                        }
-                    ]
-                }
-            },
-            {
-                query: {
-                    minAspectRatio: 1
-                },
-                option: {
-                    legend: {
-                        orient: 'vertical',
-                        x: 'left',
-                    },
-                    series: [
-                        {
-                            radius: ['21%', '42%'],
-                            center: ['52%', '40%'],
-                        },
-                        {
-                            radius: ['21%', '42%'],
-                            center: ['85%', '40%'],
-                        }
-                    ]
-                }
-            },
-            {
-                query: {
-                    maxWidth: 678, 
-                },
-                option: {
-                    legend: {
-                       show:false
-                    },
-                    series: [
-                        {
-                            radius: ['30%', '70%'],
-                            center: ['50%', '35%'],
-                        },
-                        {
-                            radius: ['30%', '70%'],
-                            center: ['50%', '75%'],
-                        }
-                    ],
-                    toolbox:{
-                        orient:"vertical",
-                        top:"20px"
-                        
-                    },
-                    title: [{
-                        text: '装备研发中心投标统计台账 投标占比',
-                        subtext: '2017-2018',
-                        x: 'center'
-                    },
-                    {
-                        text: '2017',
-                        top: "54%",
-                        left: '46%',
-                        textStyle: {
-                            fontSize: '12',
-                            fontWeight: 'bold'
-                        }
-                    },
-                    {
-                        text: '2018',
-                        top: "94%",
-                        right: '45%',
-                        textStyle: {
-                            fontSize: '12',
-                            fontWeight: 'bold'
-                        }
-                        
-                    },
-                    {
-                        text: 'By：mengqj',
-                        top: "95%",
-                        left: '0%',
-                        textStyle: {
-                            fontSize: '14',
-                            fontWeight: 'bold'
-                        }
-                        
-                    }
-                    
-                    
-                ]
-                  
-                }
-            }
-        ]
         };
         myChart.setOption(option);
+
+
+        var myChart2 = echarts.init(document.getElementById('main2'));
+        option = {
+            baseOption: {
+                tooltip: {
+                    trigger: 'axis',
+                },
+                legend: {
+                    data: ['2017年', '2018年']
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        dataView: { show: true, readOnly: false },
+                        magicType: { show: true, type: ['line', 'bar'] },
+                        restore: { show: true },
+                        saveAsImage: { show: true }
+                    }
+                },
+                calculable: true,
+                xAxis: [
+                    {
+                        type: 'category',
+                        data: ["中海石油（中国）有限公司（议标）",
+                            "中海石油（中国）有限公司天津分公司（投、议标）",
+                            "中海石油（中国）有限公司辽东作业公司（议标）",
+                            "中海石油（中国）有限公司曹妃甸作业公司（投、议标）",
+                            "中海石油（中国）有限公司渤西作业公司（投、议标）",
+                            "中海石油（中国）有限公司秦皇岛32-6作业公司（投、议标）",
+                            "中海石油（中国）有限公司渤中作业公司（议标）",
+                            "中海石油（中国）有限公司蓬勃作业公司（投、议标）",
+                            "中海石油（中国）有限公司渤南作业公司（议标）",
+                            "中海石油（中国）有限公司天津分公司渤海石油研究院（议标）",
+                            "中海石油（中国）有限公司上海分公司（投、议标）",
+                            "中海石油（中国）东海西湖石油天然气作业公司（投、议标）",
+                            "中海石油（中国）有限公司深圳分公司（投标）",
+                            "中海油研究总院（议标）",
+                            "中海油能源发展股份有限公司边际油田开发项目组（议标）",
+                            "中海油能源发展股份有限公司安全环保分公司（议标）",
+                            "中海油能源发展股份有限公司物流有限公司（议标）",
+                            "中海油能源发展股份有限公司工程技术分公司（议标）",
+                            "中海油能源发展股份有限公司销售服务分公司（议标）",
+                            "中海福建天然气有限责任公司（投标）",
+                            "海洋石油工程股份有限公司(投标)",
+                            "中海石油（中国）有限公司天津分公司商务采办部（投、议标）",
+                            "中海石油气电集团有限责任公司（议标）"]
+                    },
+                ],
+                yAxis: [
+                    {
+                        type: 'value'
+                    }
+                ],
+                series: [
+                    {
+                        name: '2017年',
+                        type: 'bar',
+                        data: [2, 4, 1, 7, 26, 4, 1, 8, 1, 2, 6, 3, 1, 4, 7, 1, 1, 1, 1, 1, 0, 0, 0],
+                        markPoint: {
+                            data: [
+                                { type: 'max', name: '最大值' },
+                                { type: 'min', name: '最小值' }
+                            ]
+                        },
+                        markLine: {
+                            data: [
+                                { type: 'average', name: '平均值' }
+                            ]
+                        }
+                    },
+                    {
+                        name: '2018年',
+                        type: 'bar',
+                        data: [1, 12, 3, 10, 1, 9, 0, 1, 0, 0, 1, 4, 0, 1, 1, 0, 0, 0, 0, 0, 1, 2, 1],
+                        markPoint: {
+                            data: [
+                                { type: 'max', name: '最大值' },
+                                { type: 'min', name: '最小值' }
+                            ]
+                        },
+                        markLine: {
+                            data: [
+                                { type: 'average', name: '平均值' }
+                            ]
+                        }
+                    }
+                ]
+            },
+            media: [
+                {
+                    option: {
+                    }
+                },
+                {
+                    query: {
+                        minAspectRatio: 1
+                    },
+                    option: {
+                    }
+                },
+                {
+                    query: {
+                        maxWidth: 678,
+                    },
+                    option: {
+                        legend: {
+                            show: false
+                        },
+                        tooltip: {
+                            position: ['2%', '50%']
+                        },
+                        series: [
+                            {
+                                radius: ['30%', '70%'],
+                                center: ['50%', '35%'],
+                            },
+                            {
+                                radius: ['30%', '70%'],
+                                center: ['50%', '75%'],
+                            }
+                        ],
+                        toolbox: {
+                            orient: "vertical",
+                            top: 50
+
+                        },
+                        xAxis: {
+                            show: false
+                        }
+
+
+                    }
+                }
+            ]
+
+        };
+
+        myChart2.setOption(option);
     </script>
 </body>
 
